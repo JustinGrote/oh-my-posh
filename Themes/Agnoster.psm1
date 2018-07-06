@@ -72,3 +72,16 @@ $sl.Colors.WithForegroundColor = [ConsoleColor]::White
 $sl.Colors.WithBackgroundColor = [ConsoleColor]::DarkRed
 $sl.Colors.VirtualEnvBackgroundColor = [System.ConsoleColor]::Red
 $sl.Colors.VirtualEnvForegroundColor = [System.ConsoleColor]::White
+
+# PSReadline options
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+if ((Get-Module PSReadline).Version.Major -lt 2) {
+    Set-PSReadlineOption -TokenKind Command -ForegroundColor DarkBlue
+    Set-PSReadlineOption -TokenKind Parameter -ForegroundColor Yellow
+}
+else {
+    Set-PSReadlineOption -Colors @{
+        "Command" = [ConsoleColor]::DarkBlue
+        "Parameter" = [ConsoleColor]::Yellow
+    }
+}
