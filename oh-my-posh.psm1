@@ -188,4 +188,3 @@ Register-ArgumentCompleter `
 
 $sl = $global:ThemeSettings #local settings
 $sl.ErrorCount = $global:error.Count
-Start-Up # Executes the Start-Up function, better encapsulation
